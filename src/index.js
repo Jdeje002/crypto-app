@@ -5,8 +5,10 @@ const axios = require("axios")
 const ipc = electron.ipcRenderer
 
 const notifyBtn = document.getElementById("notifyBtn")
+
 var price = document.querySelector('h1')
-var targertPrice = document.getElementById('targertPrice')
+var targetPriceVal;
+var targetPrice = document.getElementById('targetPrice')
 
 function getBTC(){
     axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=USD')
@@ -35,4 +37,9 @@ notifyBtn.addEventListener("click",function(event){
     win.on('close',function(){win = null})
     win.loadURL(modalPath)
     win.show()
+})
+
+ipc.on('targetPriceVal', function (event, arg) {
+    targetPriceVal = Number(arg);
+    targetPrice.innerHTML = '$'+targetPriceVal.toLocaleString('en')
 })

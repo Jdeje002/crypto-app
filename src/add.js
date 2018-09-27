@@ -12,8 +12,11 @@ closeBtn.addEventListener("click",function(event){
 })
 
 const updateBtn = document.getElementById('updateBtn')
-updateBtn.addEventListener('click',function(){
-    ipc.send('update-notify-value',document.getElementById('notifyVal').value)
-    var window = remote.getCurrentWindow()
-    window.close()
-})
+
+updateBtn.addEventListener('click', function () {
+    ipc.send('update-notify-value', document.getElementById('notifyVal').value)
+  
+    // Close this window
+    var window = remote.getCurrentWindow();
+    window.close();
+  })

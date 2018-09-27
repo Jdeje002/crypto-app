@@ -102,6 +102,6 @@ const ipc =require('electron').ipcMain
     }
   })
   
-ipc.on('update-notify-value',function(event,arg){
-    win.webContents.send("targetPriceVal",arg)
-})
+  ipc.on('update-notify-value', function (event, arg) {
+    win.webContents.send('targetPriceVal', arg)
+  })
